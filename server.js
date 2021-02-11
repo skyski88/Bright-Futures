@@ -41,21 +41,21 @@ app.use("/api/profiles", profileRouter);
 // Addn'l Middleware (something that is executed when everything comes in...)
 // =============================================================
 // Middleware if lands on unknown route
-app.use((req, res, next) => {
-  const err = new Error("Page Not Found!");
-  err.status = 404;
-  next(err);
-});
-app.use((err, req, res, next) => {
-  // assign error status to the error that has been passed from the above middleware
-  // or if the error originated in another portion of app, assign 500 (Internal Server Error) status
-  res.status(err.status || 500);
-  res.json({
-    err: {
-      message: err.message,
-    },
-  });
-});
+// app.use((req, res, next) => {
+//   const err = new Error("Page Not Found!");
+//   err.status = 404;
+//   next(err);
+// });
+// app.use((err, req, res, next) => {
+//   // assign error status to the error that has been passed from the above middleware
+//   // or if the error originated in another portion of app, assign 500 (Internal Server Error) status
+//   res.status(err.status || 500);
+//   res.json({
+//     err: {
+//       message: err.message,
+//     },
+//   });
+// });
 
 // Sets up the MongoDB / Mongoose connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3", {
