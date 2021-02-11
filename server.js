@@ -64,13 +64,16 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3", {
   useCreateIndex: true,
   useFindAndModify: false,
 });
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", () => {
-  // Starting our Express app on connection to MongoDB
-  console.log(`connected to ${chalk.green("MongoDB")}`);
-  app.listen(PORT, () => {
-    console.log(`listening on PORT ${chalk.green(PORT)}`);
-  });
+app.listen(PORT, () => {
+  console.log(`listening on PORT ${chalk.green(PORT)}`);
 });
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error: "));
+// db.once("open", () => {
+//   // Starting our Express app on connection to MongoDB
+//   console.log(`connected to ${chalk.green("MongoDB")}`);
+//   app.listen(PORT, () => {
+//     console.log(`listening on PORT ${chalk.green(PORT)}`);
+//   });
+// });
 
